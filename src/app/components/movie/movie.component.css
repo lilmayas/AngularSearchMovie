@@ -1,0 +1,9 @@
+.show-movie {
+    height: 40vh;
+    margin-top: 20px;
+}
+
+.poster {
+    height: 40vh;
+    object-fit: cover;
+}

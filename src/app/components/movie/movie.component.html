@@ -1,0 +1,49 @@
+<form [formGroup]="myForm" (ngSubmit)="findMovie(myForm)">
+    <div>
+        <label>Title</label>
+        <input type="text " formControlName="title">
+    </div>
+    <div class="mb-3 ">
+        <label >Year</label>
+        <input type="number" formControlName="year">
+    </div>
+    <button type="submit">Submit</button>
+</form>
+<div class="container show-movie">
+    <div *ngIf="history[0]">
+        <div>
+            <h3> {{history[0].Title}} [{{history[0].Year}}]</h3>
+            Running time: {{history[0].Runtime}}
+            <br/> Director: {{history[0].Director}}
+            <br/> Actors: {{history[0].Actors}}
+            <br/> Rating:
+            <div *ngFor="let item of history[0].Ratings">
+                {{item.Source}} [{{item.Value}}]
+            </div>
+            Plot: {{history[0].Plot}}
+
+        </div>
+        <div class="col">
+            <img src="{{history[0].Poster}}" class="img-thumbnail poster">
+        </div>
+    </div>
+ 
+    <div class="container" style="margin-top:20px;">
+        <label>History</label>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Poster</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Year</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let m of history">
+                    <td><img src="{{m.Poster}}" style="height: 200px; object-fit: cover;"></td>
+                    <td>{{m.Title}}</td>
+                    <td>{{m.Year}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
